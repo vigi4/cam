@@ -4,10 +4,10 @@ import os
 
 def check_err_id_object():
     while True:
-        code_object = input('Введите номер объекта: ')
-        if cam.objects.get(code_object):
-            print(f"Объект: {cam.objects[code_object]['name']} {cam.objects[code_object]['id']}")
-            return code_object
+        id_object = input('Введите номер объекта: ')
+        if cam.objects.get(id_object):
+            print(f"Объект: {cam.objects[id_object]['name']}")
+            return id_object
         else:
             print('Ошибка, объект не найден')
             continue
@@ -28,7 +28,7 @@ def check_video(id, port):
 
 
 if __name__ == '__main__':
-    id = check_err_id_object()
+    id_object = check_err_id_object()
     while True:
-        port = check_err_port(id)
-        check_video(id, port)
+        port = check_err_port(id_object)
+        check_video(id_object, port)
