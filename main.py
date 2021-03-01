@@ -32,4 +32,3 @@ if __name__ == '__main__':
     while True:
         port = check_err_port(id)
         check_video(id, port)
-
