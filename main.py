@@ -23,7 +23,7 @@ def check_err_port(id):
 
 
 def check_video(id, port):
-    vlc = f"cvlc {cam.objects[id]['rtsp']}{cam.objects[id]['ip']}:{port}"
+    vlc = f"vlc {cam.objects[id]['rtsp']}{cam.objects[id]['ip']}:{port}"
     print(vlc)
     os.system(vlc)
 
