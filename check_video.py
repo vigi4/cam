@@ -14,11 +14,14 @@ def check_err_id_object():
 
 
 def check_err_port(id):
+    port2 = cam.objects[id].get('port2')
 
     while True:
-        port = input('Введите порт: {} '.format(cam.objects[id]['ports']))
+        port = input('{}{} Введите порт: '.format(cam.objects[id]['ports'], port2))
 
         if port in cam.objects[id]['ports']:
+            return port
+        elif port in cam.objects[id]['port2']:
             return port
         elif port.lower() == 'q':
             check_err_id_object()
@@ -28,8 +31,13 @@ def check_err_port(id):
 
 def check_video(id, port):
 
-    link = cam.objects[id]['rtsp'].format(cam.objects[id]['ip'], port)
-    vlc = f"vlc {link}"
+    if port in cam.objects[id]['port2']:
+        link = cam.objects[id]['rtsp2'].format(cam.objects[id]['ip'], port)
+        vlc = f"vlc {link}"
+
+    else:
+        link = cam.objects[id]['rtsp'].format(cam.objects[id]['ip'], port)
+        vlc = f"vlc {link}"
 
     os.system(vlc)
 
