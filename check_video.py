@@ -20,6 +20,8 @@ def check_err_port(id):
 
         if port in cam.objects[id]['ports']:
             return port
+        elif port.lower() == 'q':
+            check_err_id_object()
         else:
             print('Ошибка, некорректный порт')
 
