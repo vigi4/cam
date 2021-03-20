@@ -28,12 +28,14 @@ def check_err_port(id):
 
 
 def check_video(id, port):
-    if port is cam.objects[id].get('port2'):
-        link = cam.objects[id]['rtsp2'].format(cam.objects[id]['ip'], port)
+    vlc = ''
+
+    if port in cam.objects[id]['ports']:
+        link = cam.objects[id]['rtsp'].format(cam.objects[id]['ip'], port)
         vlc = f"vlc {link}"
 
-    else:
-        link = cam.objects[id]['rtsp'].format(cam.objects[id]['ip'], port)
+    elif port in cam.objects[id]['port2']:
+        link = cam.objects[id]['rtsp2'].format(cam.objects[id]['ip'], port)
         vlc = f"vlc {link}"
 
     os.system(vlc)
